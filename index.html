@@ -1,1 +1,408 @@
-ahoj světe
+HTML
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Průvodce Scio testy | OSP a ZSV bez stresu</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigace */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Úvodní sekce (Hero) */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #fbbf24;
+        }
+
+        /* Hlavní obsah */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: -1rem auto 3rem auto;
+        }
+
+        /* Karty OSP a ZSV */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--primary);
+        }
+
+        .card.zsv {
+            border-top-color: var(--secondary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        /* Tipy na učení */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .tip-number {
+            display: inline-block;
+            background: #dbeafe;
+            color: var(--primary);
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        /* Harmonogram */
+        .timeline {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .timeline-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Mini kvíz */
+        .quiz-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 2px solid #e2e8f0;
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .quiz-options button:hover {
+            border-color: var(--primary);
+            background: #f1f5f9;
+        }
+
+        #quiz-feedback {
+            margin-top: 15px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        /* Patička */
+        footer {
+            background-color: var(--text-dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">SCIO PRŮVODCE</a>
+            <div class="nav-links">
+                <a href="#testy">OSP vs. ZSV</a>
+                <a href="#tipy">Jak se učit</a>
+                <a href="#plan">Harmonogram</a>
+                <a href="#kviz">Ukázková úloha</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Zvládni přijímačky na VŠ s přehledem</h1>
+        <p>Kompletní strategie, osvědčené tipy a studijní plán pro testy Obecných studijních předpokladů (OSP) a Základů společenských věd (ZSV).</p>
+        <a href="#tipy" class="btn">Chci začít s přípravou</a>
+    </section>
+
+    <section id="testy" class="container">
+        <h2>Co tě u testů čeká?</h2>
+        <p class="subtitle">Každý z testů vyžaduje úplně jiný přístup. Zatímco jeden je o rychlosti a strategii, druhý prověří tvé znalosti.</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>📘 Test OSP (Obecné studijní předpoklady)</h3>
+                <p>Netestuje naučené poučky, ale schopnost logicky uvažovat, pracovat s textem a řešit problémy pod časovým tlakem.</p>
+                <ul>
+                    <li><strong>Verbální oddíl:</strong> Práce s dlouhými texty, synonyma, logické vztahy mezi pojmy.</li>
+                    <li><strong>Analytický oddíl:</strong> Logické hádanky, práce s grafy, tabulkami a základy matematiky.</li>
+                    <li><strong>Klíč k úspěchu:</strong> Časový management. Nenech se zaseknout na jedné těžké úloze.</li>
+                </ul>
+            </div>
+
+            <div class="card zsv">
+                <h3>⚖️ Test ZSV (Základy společenských věd)</h3>
+                <p>Znalostní test pokrývající středoškolské učivo společenských věd a přehled o současném dění.</p>
+                <ul>
+                    <li><strong>Člověk a společnost:</strong> Psychologie, sociologie, filozofie.</li>
+                    <li><strong>Stát a právo:</strong> Ústava ČR, politologie, mezinárodní vztahy, ekonomie.</li>
+                    <li><strong>Moderní dějiny:</strong> Světové a české dějiny od roku 1945 do současnosti.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="tipy" class="container" style="background-color: #eef2ff; border-radius: 20px;">
+        <h2>6 zlatých pravidel přípravy</h2>
+        <p class="subtitle">Jak studovat efektivně a neztrácet čas nefunkčními metodami.</p>
+
+        <div class="tips-grid">
+            <div class="tip-box">
+                <span class="tip-number">1</span>
+                <h4>Trénuj se stopkami</h4>
+                <p>U OSP je největším nepřítelem čas. Každý cvičný test si piš přesně na minuty, jako by šlo o ostrý termín.</p>
+            </div>
+            <div class="tip-box">
+                <span class="tip-number">2</span>
+                <h4>Pozor na penalizaci</h4>
+                <p>Za špatnou odpověď se odečítají body (zpravidla třetina až čtvrtina bodu). Nikdy netipuj naslepo, pokud nedokážeš vyloučit alespoň 2 možnosti.</p>
+            </div>
+            <div class="tip-box">
+                <span class="tip-number">3</span>
+                <h4>Analyzuj své chyby</h4>
+                <p>Nestačí test jen opravit. U každé chyby si zapiš, <em>proč</em> jsi ji udělal (nepozornost, neznalost pojmu, špatná strategie).</p>
+            </div>
+            <div class="tip-box">
+                <span class="tip-number">4</span>
+                <h4>Metoda aktivního vybavování</h4>
+                <p>U ZSV si jen nepodtrhávej učebnice. Zavři sešit a zkus téma vysvětlit nahlas vlastními slovy nebo si vytvoř kartičky (Anki).</p>
+            </div>
+            <div class="tip-box">
+                <span class="tip-number">5</span>
+                <h4>Sleduj aktuální dění</h4>
+                <p>V ZSV se často objevují otázky na současnou politiku, ekonomiku nebo významná výročí. Poslouchej zpravodajské podcasty.</p>
+            </div>
+            <div class="tip-box">
+                <span class="tip-number">6</span>
+                <h4>Využij více termínů</h4>
+                <p>Fakulty berou tvůj nejlepší výsledek. První termín ber jako „nanečisto“, abys odboural stres z prostředí.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="plan" class="container">
+        <h2>Doporučený harmonogram přípravy</h2>
+        <p class="subtitle">Ideální rozložení sil v posledních měsících před zkouškami.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>3–4 měsíce před testem: Diagnostika a základy</h4>
+                <p>Napiš si jeden ostrý test OSP a ZSV z minulých let. Zjistíš svůj výchozí percentil a uvidíš, které oblasti ti dělají největší problém (např. logické úlohy nebo ekonomie). Rozděl si látku ZSV do týdenních bloků.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1–2 měsíce před testem: Intenzivní dril</h4>
+                <p>Každý týden vyřeš minimálně jeden celý test OSP. Uč se zkratky pro řešení analytických úloh (kreslení schémat, dosazování z možností). V ZSV propojuj souvislosti a opakuj si pojmy.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Poslední týden: Ladění formy</h4>
+                <p>Už se neuč nic úplně nového. Projdi si svůj sešit s nejčastějšími chybami, srovnej si spánkový režim a den před testem si dej úplné volno, aby si mozek odpočinul.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kviz" class="container">
+        <h2>Vyzkoušej si krátkou úlohu (OSP)</h2>
+        <p class="subtitle">Otestuj si logické uvažování nanečisto.</p>
+
+        <div class="quiz-box">
+            <p><strong>Zadání:</strong> Všichni studenti, kteří složili zkoušku z logiky, mají rádi kávu. Petr nemá rád kávu. Které z následujících tvrzení z toho nutně vyplývá?</p>
+            <div class="quiz-options">
+                <button onclick="checkAnswer(false)">A) Petr nechodí na vysokou školu.</button>
+                <button onclick="checkAnswer(true)">B) Petr nesložil zkoušku z logiky.</button>
+                <button onclick="checkAnswer(false)">C) Někteří lidé, kteří mají rádi kávu, nesložili zkoušku z logiky.</button>
+                <button onclick="checkAnswer(false)">D) Petr se na zkoušku z logiky vůbec nepřipravoval.</button>
+            </div>
+            <div id="quiz-feedback"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Průvodce Scio testy | Vytvořeno pro budoucí vysokoškoláky</p>
+    </footer>
+
+    <script>
+        function checkAnswer(isCorrect) {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.style.display = 'block';
+            
+            if (isCorrect) {
+                feedback.style.backgroundColor = '#dcfce7';
+                feedback.style.color = '#166534';
+                feedback.innerHTML = '✅ Správně! Pokud by Petr zkoušku složil, musel by mít rád kávu. Jelikož ji rád nemá, zkoušku určitě nesložil (tzv. obměna implikace).';
+            } else {
+                feedback.style.backgroundColor = '#fee2e2';
+                feedback.style.color = '#991b1b';
+                feedback.innerHTML = '❌ Zkus to znovu. Pozor na domýšlení informací, které v textu vůbec nejsou! Drž se čisté logiky.';
+            }
+        }
+    </script>
+
+</body>
+</html>
