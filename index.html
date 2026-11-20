@@ -7,11 +7,12 @@ HTML
     <title>Průvodce Scio testy | OSP a ZSV bez stresu</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #f59e0b;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
+            --primary: #7c3aed;       /* Hlavní fialová */
+            --primary-dark: #5b21b6;  /* Tmavší fialová */
+            --primary-light: #ede9fe; /* Světle fialové pozadí prvků */
+            --secondary: #d946ef;     /* Purpurová / růžovofialová akcentní */
+            --bg-light: #faf8ff;      /* Velmi jemný fialový nádech pozadí */
+            --text-dark: #1e1b4b;     /* Tmavě indigový text */
             --text-muted: #64748b;
             --white: #ffffff;
         }
@@ -33,7 +34,7 @@ HTML
         /* Navigace */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -69,7 +70,7 @@ HTML
 
         /* Úvodní sekce (Hero) */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #4c1d95 100%);
             color: var(--white);
             text-align: center;
             padding: 80px 20px;
@@ -85,23 +86,26 @@ HTML
             font-size: 1.2rem;
             max-width: 650px;
             margin: 0 auto 2rem auto;
-            opacity: 0.9;
+            opacity: 0.92;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--secondary);
-            color: var(--text-dark);
+            color: var(--white);
             padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
             transition: transform 0.2s, background-color 0.2s;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            background-color: #fbbf24;
+            background-color: #c026d3;
         }
 
         /* Hlavní obsah */
@@ -137,7 +141,7 @@ HTML
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.05);
             border-top: 5px solid var(--primary);
         }
 
@@ -160,6 +164,11 @@ HTML
         }
 
         /* Tipy na učení */
+        .tips-section {
+            background-color: #f3e8ff;
+            border-radius: 20px;
+        }
+
         .tips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -170,12 +179,12 @@ HTML
             background: var(--white);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.04);
         }
 
         .tip-number {
             display: inline-block;
-            background: #dbeafe;
+            background: var(--primary-light);
             color: var(--primary);
             font-weight: bold;
             width: 32px;
@@ -191,7 +200,7 @@ HTML
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.05);
         }
 
         .timeline-item {
@@ -217,7 +226,7 @@ HTML
             border-radius: 12px;
             max-width: 700px;
             margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.06);
         }
 
         .quiz-options button {
@@ -226,31 +235,120 @@ HTML
             text-align: left;
             padding: 12px 15px;
             margin: 10px 0;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #e9d5ff;
             background: var(--white);
             border-radius: 8px;
             cursor: pointer;
             font-size: 1rem;
+            color: var(--text-dark);
             transition: all 0.2s;
         }
 
         .quiz-options button:hover {
             border-color: var(--primary);
-            background: #f1f5f9;
+            background: var(--primary-light);
         }
 
         #quiz-feedback {
             margin-top: 15px;
             font-weight: bold;
-            padding: 10px;
+            padding: 12px;
             border-radius: 6px;
             display: none;
         }
 
+        /* Komunitní fórum */
+        .forum-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .forum-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.06);
+            margin-bottom: 30px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9d5ff;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .forum-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .post-card {
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.04);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .post-author {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .post-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
         /* Patička */
         footer {
-            background-color: var(--text-dark);
-            color: #94a3b8;
+            background-color: #2e1065;
+            color: #ddd6fe;
             text-align: center;
             padding: 30px 20px;
             margin-top: 60px;
@@ -272,6 +370,7 @@ HTML
                 <a href="#tipy">Jak se učit</a>
                 <a href="#plan">Harmonogram</a>
                 <a href="#kviz">Ukázková úloha</a>
+                <a href="#forum">Fórum</a>
             </div>
         </nav>
     </header>
@@ -309,7 +408,7 @@ HTML
         </div>
     </section>
 
-    <section id="tipy" class="container" style="background-color: #eef2ff; border-radius: 20px;">
+    <section id="tipy" class="container tips-section">
         <h2>6 zlatých pravidel přípravy</h2>
         <p class="subtitle">Jak studovat efektivně a neztrácet čas nefunkčními metodami.</p>
 
@@ -383,11 +482,44 @@ HTML
         </div>
     </section>
 
+    <section id="forum" class="container">
+        <h2>Studentské fórum a zkušenosti</h2>
+        <p class="subtitle">Poděl se o své tipy na učení, dojmy z termínů nebo napiš, co ti při přípravě nejvíce pomohlo.</p>
+
+        <div class="forum-container">
+            <form class="forum-form" id="forum-form">
+                <div class="form-group">
+                    <label for="author">Tvé jméno nebo přezdívka</label>
+                    <input type="text" id="author" placeholder="Např. Terka_2026" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Téma příspěvku</label>
+                    <select id="category">
+                        <option value="Tip na OSP">Tip na OSP</option>
+                        <option value="Tip na ZSV">Tip na ZSV</option>
+                        <option value="Zkušenost z testu">Zkušenost z testu</option>
+                        <option value="Obecná diskuze">Obecná diskuze</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tvůj názor nebo tip pro ostatní</label>
+                    <textarea id="message" rows="4" placeholder="Napiš svou zkušenost nebo radu..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Přidat příspěvek do fóra</button>
+            </form>
+
+            <div class="forum-posts" id="forum-posts">
+                <!-- Příspěvky se načtou automaticky pomocí JavaScriptu -->
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Průvodce Scio testy | Vytvořeno pro budoucí vysokoškoláky</p>
     </footer>
 
     <script>
+        // Logika pro ukázkový kvíz
         function checkAnswer(isCorrect) {
             const feedback = document.getElementById('quiz-feedback');
             feedback.style.display = 'block';
@@ -402,7 +534,85 @@ HTML
                 feedback.innerHTML = '❌ Zkus to znovu. Pozor na domýšlení informací, které v textu vůbec nejsou! Drž se čisté logiky.';
             }
         }
-    </script>
 
-</body>
-</html>
+        // Logika pro studentské fórum
+        const defaultPosts = [
+            {
+                author: "Honza (budoucí právník)",
+                category: "Tip na OSP",
+                date: "Před 2 dny",
+                text: "U analytického oddílu mi nejvíc pomohlo naučit se úlohy přeskakovat. Jakmile jsem po 20 sekundách nevěděl, jak na to, šel jsem dál a vrátil se k tomu až na konci. Percentil mi díky tomu vyskočil o 15 bodů!"
+            },
+            {
+                author: "Klára M.",
+                category: "Tip na ZSV",
+                date: "Včera",
+                text: "Na ZSV doporučuju poslouchat podcasty jako Vinohradská 12 nebo Studio N. Hodně otázek z moderních dějin a politologie se točí kolem věcí, co se řeší v médiích."
+            }
+        ];
+
+        function loadPosts() {
+            const savedPosts = JSON.parse(localStorage.getItem('scioForumPosts')) || defaultPosts;
+            const postsContainer = document.getElementById('forum-posts');
+            postsContainer.innerHTML = '';
+
+            savedPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-card';
+                postElement.innerHTML = `
+                    <div class="post-header">
+                        <div>
+                            <span class="post-author">${escapeHTML(post.author)}</span>
+                            <span class="post-tag" style="margin-left: 8px;">${escapeHTML(post.category)}</span>
+                        </div>
+                        <span class="post-date">${escapeHTML(post.date)}</span>
+                    </div>
+                    <p>${escapeHTML(post.text)}</p>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+
+        // Ochrana proti vložení škodlivého kódu do komentáře
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag])
+            );
+        }
+
+        document.getElementById('forum-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const author = document.getElementById('author').value.trim();
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value.trim();
+            
+            if (!author || !message) return;
+
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('cs-CZ') + ' ' + now.toLocaleTimeString('cs-CZ', {hour: '2-digit', minute:'2-digit'});
+
+            const newPost = {
+                author: author,
+                category: category,
+                date: dateStr,
+                text: message
+            };
+
+            const savedPosts = JSON.parse(localStorage.getItem('scioForumPosts')) || defaultPosts;
+            savedPosts.unshift(newPost); // Přidá nový příspěvek úplně nahoru
+            localStorage.setItem('scioForumPosts', JSON.stringify(savedPosts));
+
+            this.reset();
+            loadPosts();
+        });
+
+        // Načtení příspěvků při otevření stránky
+        loadPosts();
+    </script>
